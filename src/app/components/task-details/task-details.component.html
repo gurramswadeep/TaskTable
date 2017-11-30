@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" name="titleName" [(ngModel)]="allDetails.titleName">
+
+    <label>Description</label>
+    <textarea class="form-control" name="description" [(ngModel)]="allDetails.description"></textarea>
+    
+    <span>
+        <label >Priority</label>
+        <select class="form-control" >
+          <option>--Select--</option>
+          <option >Normal</option>
+          <option >Major</option>
+          <option >Critical</option>
+        </select>
+    </span>
+   
+    <span>
+      <label >Status</label>
+      <select class="form-control" >
+        <option>--Select--</option>
+        <option >ToDo</option>
+        <option >In Progress</option>
+        <option >Done</option>
+      </select>
+    </span>
+  
+      <span><label>Due Date</label>
+        <input type="date" class="form-control" >
+      </span>
+
+    <div>
+        <label >Parent</label>
+        <select class="form-control" >
+          <option>--Select--</option>
+          <option >Task1</option>
+          <option >Task2</option>
+          <option >Task3</option>
+        </select>
+      </div>
+    <button class="btn btn-success" (click)="submitOnCreate()">Submit</button>
+    <button class="btn btn-success">Delete</button>  
+    <button class="btn btn-success">Cancel</button>        
+  </div>
+</div>
