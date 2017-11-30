@@ -21,6 +21,7 @@ export class TaskDetailsComponent implements OnInit {
     });
     if(localStorage.getItem('Tasks') === null){
       this.tasks = [];
+      
     }
     else{
       this.tasks = JSON.parse(localStorage.getItem('Tasks'));
