@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'task-list',
@@ -10,13 +11,14 @@ export class TaskListComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
   status:boolean = false;
-  tasks:any=[];
+  tasks=[];
   values={};
   keys=[];
   today:Date;
   ngOnInit() {
-    this.tasks = this.dataService.getTasks();
-    this.keys = Object.keys(this.tasks[0]);
+    this.dataService.getTasks().subscribe((data)=>{
+      this.tasks = data;
+    });
   }
 
   addTaskStatus(){
@@ -34,6 +36,7 @@ export class TaskListComponent implements OnInit {
       //push new values into tasks
       this.tasks.push(this.values);
       this.tasks[this.tasks.length-1].Date_Created = dateTime;
+      this.tasks[this.tasks.length-1].Data_Modified = dateTime;
       console.log(this.tasks);
 
       //hide create row

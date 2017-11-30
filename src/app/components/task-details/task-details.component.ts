@@ -17,18 +17,25 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.index = params['index'];
-      // console.log(this.index);
     });
+    
+    //check if localStorage of "Tasks" is full or empty
     if(localStorage.getItem('Tasks') === null){
       this.tasks = [];
-      
     }
     else{
-      this.tasks = JSON.parse(localStorage.getItem('Tasks'));
-      console.log(this.tasks);
+      this.tasks = JSON.parse(localStorage.getItem('Tasks')); //Parse string back to objects
+      this.updateTask(this.index);
     }
   }
 
+  updateTask(index){
+    this.allDetails = this.tasks[index];
+    console.log(this.allDetails);
+  }
 
+  deleteTask(){
+    // this.allDetails.splice(this.index,1);
+  }
 
 }

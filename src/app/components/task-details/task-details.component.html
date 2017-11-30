@@ -1,33 +1,33 @@
 <div class="container">
   <div class="form-group">
     <label>Title</label>
-    <input type="text" class="form-control" name="titleName" [(ngModel)]="allDetails.titleName">
+    <input type="text" class="form-control" name="Title" [(ngModel)]="allDetails.Title">
 
-    <label>Description</label>
+    <!-- <label>Description</label>
     <textarea class="form-control" name="description" [(ngModel)]="allDetails.description"></textarea>
-    
+     -->
     <span>
         <label >Priority</label>
-        <select class="form-control" >
+        <select class="form-control" [(ngModel)]="allDetails.Priority">
           <option>--Select--</option>
-          <option >Normal</option>
-          <option >Major</option>
-          <option >Critical</option>
+          <option value="Normal">Normal</option>
+          <option value="Major">Major</option>
+          <option value="Critical">Critical</option>
         </select>
     </span>
    
     <span>
       <label >Status</label>
-      <select class="form-control" >
+      <select class="form-control" [(ngModel)]="allDetails.Status">
         <option>--Select--</option>
-        <option >ToDo</option>
-        <option >In Progress</option>
-        <option >Done</option>
+        <option value="ToDo">ToDo</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Done">Done</option>
       </select>
     </span>
   
       <span><label>Due Date</label>
-        <input type="date" class="form-control" >
+        <input type="date" class="form-control" [(ngModel)]="allDetails.Due_Date">
       </span>
 
     <div>
@@ -39,8 +39,8 @@
           <option >Task3</option>
         </select>
       </div>
-    <button class="btn btn-success" (click)="submitOnCreate()">Submit</button>
-    <button class="btn btn-success">Delete</button>  
-    <button class="btn btn-success">Cancel</button>        
+    
+    <button class="btn btn-success" (click)="deleteTask()" style="float:left">Delete</button>  
+    <button class="btn btn-success" style="float:right">Cancel</button>        
   </div>
 </div>
