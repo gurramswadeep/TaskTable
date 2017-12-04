@@ -35,7 +35,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   deleteTask(){
-    // this.allDetails.splice(this.index,1);
+    this.tasks.splice(this.index,1);
   }
 
 }
