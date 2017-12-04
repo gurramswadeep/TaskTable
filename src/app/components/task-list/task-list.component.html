@@ -1,124 +1,126 @@
-<div class="container">
-  <div class="tasktable">
-    <button id="create" class="btn btn-info" style="float:right" *ngIf="createStatus" (click)="addTask($event)">Create</button>
-
-    <!-- Task Table-->
-    <table class="table table-striped table-hover table-responsive">
-      <thead >
-        <th >Tittle</th>
-        <th >Priority</th>
-        <th >Status</th>
-        <th >Due Date</th>
-        <th >Date Created</th>
-        <th >Date Modified</th>
-      </thead>
-
-
-      <tr *ngFor="let task of tasks;let i=index" >
-
-        <td (click)="update(i)">{{task.Title}}
-          <div class="child" (click)="updateChild(i,childIndex)" *ngFor="let childTask of task.child; let childIndex = index">
-            {{childTask.Title}}
-            <div>
-              <div class="gChild" (click)="updateGChild(i,childIndex,gChildIndex)" *ngFor="let grandchild of childTask.grandchild; let gChildIndex = index">
-                {{grandchild.Title}}
-              </div>
-            </div>
-          </div>
-        </td>
-
-        <td>{{task.Priority}}
-          <div *ngFor="let childTask of task.child">
-              {{childTask.Priority}}
-              <div *ngFor="let grandchild of childTask.grandchild">
-                {{grandchild.Priority}}
-              </div>
-            </div>
-        </td>
-
-
-        <td>{{task.Status}}
-          <div *ngFor="let childTask of task.child">
-              {{childTask.Status}}
-              <div *ngFor="let grandchild of childTask.grandchild">
-                {{grandchild.Status}}
-              </div>
-            </div>
-        </td>
-
-
-        <td>{{task.Due_Date}}
-          <div *ngFor="let childTask of task.child">
-              {{childTask.Due_Date}}
-              <div *ngFor="let grandchild of childTask.grandchild">
-                {{grandchild.Due_Date}}
-              </div>
-            </div>
-        </td>
-
-        <td>{{task.Date_Created}}
-          <div *ngFor="let childTask of task.child">
-              {{childTask.Date_Created}}
-              <div *ngFor="let grandchild of childTask.grandchild">
-                {{grandchild.Date_Created}}
-              </div>
-            </div>
-        </td>
-
-        <td>{{task.Date_Modified}}
-          <div *ngFor="let childTask of task.child">
-              {{childTask.Date_Modified}}
-              <div *ngFor="let grandchild of childTask.grandchild">
-                {{grandchild.Date_Modified}}
-              </div>
-            </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- Task Details -->
-  <div class="taskDetails" >
-        <div class="form-group">
-          <label>Title</label>
-          <input type="text" class="form-control" name="Title"  [(ngModel)]="values.Title" >
-    
-          <label>Description</label>
-          <textarea class="form-control" name="description" [(ngModel)]="values.description"></textarea>
-         
-          <span>
-              <label >Priority</label>
-              <select class="form-control" [(ngModel)]="values.Priority" >
-                <option>--Select--</option>
-                <option value="Normal">Normal</option>
-                <option value="Major">Major</option>
-                <option value="Critical">Critical</option>
-              </select>
-          </span>
-        
-          <span>
-            <label >Status</label>
-            <select class="form-control" [(ngModel)]="values.Status" >
-              <option>--Select--</option>
-              <option value="ToDo">ToDo</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Done">Done</option>
-            </select>
-          </span>
-        
-            <span><label>Due Date</label>
-              <input type="date" class="form-control" [(ngModel)]="values.Due_Date">
+<div class="container-flow">
+  <div class="row">
+    <div class="col-lg-8">
+      <span style="padding-left:50px;padding-top:20px;font-weight:700;font-size:30px">Task List</span><button id="create" class="btn btn-info" style="float:right" *ngIf="createStatus" (click)="addTask($event)">Create</button>
+      <br><br>
+          <!-- Task Table-->
+          <table class="table table-striped table-hover table-responsive">
+            <thead >
+              <th >Tittle</th>
+              <th >Priority</th>
+              <th >Status</th>
+              <th >Due Date</th>
+              <th >Date Created</th>
+              <th >Date Modified</th>
+            </thead>
+      
+      
+            <tr *ngFor="let task of tasks;let i=index" >
+      
+              <td ><div (click)="update(i)">{{task.Title}}</div>
+                <div class="child" (click)="updateChild(i,j)" *ngFor="let childTask of task.child; let j = index">
+                  {{childTask.Title}}
+                  <div>
+                    <div class="gChild" (click)="updateGChild(i,j,k)" *ngFor="let grandchild of childTask.grandchild; let k = index">
+                      {{grandchild.Title}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+      
+              <td>{{task.Priority}}
+                <div *ngFor="let childTask of task.child">
+                    {{childTask.Priority}}
+                    <div *ngFor="let grandchild of childTask.grandchild">
+                      {{grandchild.Priority}}
+                    </div>
+                  </div>
+              </td>
+      
+      
+              <td>{{task.Status}}
+                <div *ngFor="let childTask of task.child">
+                    {{childTask.Status}}
+                    <div *ngFor="let grandchild of childTask.grandchild">
+                      {{grandchild.Status}}
+                    </div>
+                  </div>
+              </td>
+      
+      
+              <td>{{task.Due_Date}}
+                <div *ngFor="let childTask of task.child">
+                    {{childTask.Due_Date}}
+                    <div *ngFor="let grandchild of childTask.grandchild">
+                      {{grandchild.Due_Date}}
+                    </div>
+                  </div>
+              </td>
+      
+              <td>{{task.Date_Created}}
+                <div *ngFor="let childTask of task.child">
+                    {{childTask.Date_Created}}
+                    <div *ngFor="let grandchild of childTask.grandchild">
+                      {{grandchild.Date_Created}}
+                    </div>
+                  </div>
+              </td>
+      
+              <td>{{task.Date_Modified}}
+                <div *ngFor="let childTask of task.child">
+                    {{childTask.Date_Modified}}
+                    <div *ngFor="let grandchild of childTask.grandchild">
+                      {{grandchild.Date_Modified}}
+                    </div>
+                  </div>
+              </td>
+            </tr>
+          </table>
+    </div>
+    <div class="col-lg-4">
+      <div class="taskDetails" >
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="Title"  [(ngModel)]="values.Title" >
+      
+            <label>Description</label>
+            <textarea class="form-control" name="description" [(ngModel)]="values.description"></textarea>
+            
+            <span>
+                <label >Priority</label>
+                <select class="form-control" [(ngModel)]="values.Priority" >
+                  <option>--Select--</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Major">Major</option>
+                  <option value="Critical">Critical</option>
+                </select>
             </span>
-    
-          <div>
-              <label >Parent</label>
-              <select class="form-control" [(ngModel)]="values.Parent" >
-                <option *ngFor="let task of parents_childs_titles" value="{{task}}">{{task}}</option>
+          
+            <span>
+              <label >Status</label>
+              <select class="form-control" [(ngModel)]="values.Status" >
+                <option>--Select--</option>
+                <option value="ToDo">ToDo</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
               </select>
-            </div>
-          <br>
-          <button class="btn btn-success" (click)="deleteTask()" style="float:left">Delete</button>  
-          <button class="btn btn-success" (click)="cancel()" style="float:right">Cancel</button>        
-        </div>
-  </div>
+            </span>
+          
+              <span><label>Due Date</label>
+                <input type="date" class="form-control" [(ngModel)]="values.Due_Date">
+              </span>
+      
+            <div>
+                <label >Parent</label>
+                <select class="form-control" [(ngModel)]="values.Parent" >
+                  <option *ngFor="let task of parents_childs_titles" value="{{task}}">{{task}}</option>
+                </select>
+              </div>
+            <br>
+            <button class="btn btn-success" (click)="deleteTask()" >Delete</button>  
+            <button class="btn btn-success" (click)="cancel()" style="float:right">Cancel</button>        
+          </div>
+      </div>
+    </div>
+  </div> 
 </div>

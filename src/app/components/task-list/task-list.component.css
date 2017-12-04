@@ -1,23 +1,20 @@
-.tasktable{
-    width:80%;
+/* .tasktable{
+    width:60%;
     float:left;
-    margin-top:5%;
-    margin-left:-5%;
-}
 
-.tasktable td:first-of-type{
+} */
+
+/* .tasktable td{
     width: 20%;
+} */
+.container-flow{
+    margin-top:70px;
 }
 
 .taskDetails{
-    width:30%;
-    float:right;
-    margin-top:5%;
-    margin-right:-7%;
     border:1px solid black;
     padding:5%;
     border-radius: 5%;
-    
 }
 
 ol{
