@@ -44,8 +44,7 @@ export class TaskListComponent implements OnInit {
       this.today = new Date();
       var date = (this.today.getMonth()+1)+'/'+this.today.getDate()+'/'+this.today.getFullYear();
       var time = this.today.getHours() + ":" + this.today.getMinutes();
-      var ampm = this.today.getHours()>12 ? 'PM':'AM';
-      var dateTime = date+' '+time+ampm;
+      var dateTime = date+' '+time;
       this.values["Date_Created"] = dateTime;
       this.values["Date_Modified"]= dateTime;
 
@@ -128,41 +127,38 @@ export class TaskListComponent implements OnInit {
 
   //Update Parent task
   createStatus:boolean = true;
-  update(i){
+  update(parentIndex){
     this.createStatus = !this.createStatus;
-    this.values = this.tasks[i];
+    this.values = this.tasks[parentIndex];
     // update date modified
     this.today = new Date();
     var date = (this.today.getMonth()+1)+'/'+this.today.getDate()+'/'+this.today.getFullYear();
     var time = this.today.getHours() + ":" + this.today.getMinutes();
-    var ampm = this.today.getHours()>12 ? 'PM':'AM';
-    var dateTime = date+' '+time+ampm;
+    var dateTime = date+' '+time;
     this.values["Date_Modified"]= dateTime;
   }
 
   //Update child task
-  updateChild(i,j){
+  updateChild(parentIndex,childIndex){
     this.createStatus = !this.createStatus;
-    this.values = this.tasks[i].child[j];
+    this.values = this.tasks[parentIndex].child[childIndex];
     // update date modified
     this.today = new Date();
     var date = (this.today.getMonth()+1)+'/'+this.today.getDate()+'/'+this.today.getFullYear();
     var time = this.today.getHours() + ":" + this.today.getMinutes();
-    var ampm = this.today.getHours()>12 ? 'PM':'AM';
-    var dateTime = date+' '+time+ampm;
+    var dateTime = date+' '+time;
     this.values["Date_Modified"]= dateTime; 
   }
 
   //update grandchild task
-  updateGChild(i,j,k){
+  updateGChild(parentIndex,childIndex,gChildIndex){
     this.createStatus = !this.createStatus;
-    this.values = this.tasks[i].child[j].grandchild[k];
+    this.values = this.tasks[parentIndex].child[childIndex].grandchild[gChildIndex];
      // update date modified
      this.today = new Date();
      var date = (this.today.getMonth()+1)+'/'+this.today.getDate()+'/'+this.today.getFullYear();
      var time = this.today.getHours() + ":" + this.today.getMinutes();
-     var ampm = this.today.getHours()>12 ? 'PM':'AM';
-     var dateTime = date+' '+time+ampm;
+     var dateTime = date+' '+time;
      this.values["Date_Modified"]= dateTime;
   }
 
@@ -170,6 +166,7 @@ export class TaskListComponent implements OnInit {
   cancel(){
     this.values = {};
     this.createStatus = !this.createStatus;
+
   }
 
   // deleteTask(){

@@ -13,15 +13,12 @@
               <th >Date Created</th>
               <th >Date Modified</th>
             </thead>
-      
-      
-            <tr *ngFor="let task of tasks;let i=index" >
-      
-              <td ><div (click)="update(i)">{{task.Title}}</div>
-                <div class="child" (click)="updateChild(i,j)" *ngFor="let childTask of task.child; let j = index">
+            <tr *ngFor="let task of tasks;let parentIndex=index" >
+              <td ><div (click)="update(parentIndex)">{{task.Title}}</div>
+                <div class="child" (click)="updateChild(parentIndex,childIndex)" *ngFor="let childTask of task.child; let childIndex = index">
                   {{childTask.Title}}
                   <div>
-                    <div class="gChild" (click)="updateGChild(i,j,k)" *ngFor="let grandchild of childTask.grandchild; let k = index">
+                    <div class="gChild" (click)="updateGChild(parentIndex,childIndex,gChildIndex)" *ngFor="let grandchild of childTask.grandchild; let gChildIndex = index">
                       {{grandchild.Title}}
                     </div>
                   </div>
@@ -37,7 +34,6 @@
                   </div>
               </td>
       
-      
               <td>{{task.Status}}
                 <div *ngFor="let childTask of task.child">
                     {{childTask.Status}}
@@ -46,7 +42,6 @@
                     </div>
                   </div>
               </td>
-      
       
               <td>{{task.Due_Date}}
                 <div *ngFor="let childTask of task.child">
