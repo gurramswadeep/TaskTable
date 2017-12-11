@@ -1,3 +1,12 @@
 input[type=data]{
     border:1px solid gray;
 }
+
+.task{
+    width:50%;
+    float:right;
+    border:1px solid black;
+    border-radius: 3%;
+    margin-top:7%;
+    padding:5%;
+}

@@ -18,6 +18,7 @@ export class TaskDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.index = params['index'];
     });
+
     
     //check if localStorage of "Tasks" is full or empty
     if(localStorage.getItem('Tasks') === null){
@@ -28,6 +29,7 @@ export class TaskDetailsComponent implements OnInit {
       this.updateTask(this.index);
     }
   }
+  
 
   updateTask(index){
     this.allDetails = this.tasks[index];
@@ -35,7 +37,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   deleteTask(){
-    // this.allDetails.splice(this.index,1);
+    this.tasks.splice(this.index,1);
   }
 
 }
