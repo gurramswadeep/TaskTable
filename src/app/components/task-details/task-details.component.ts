@@ -18,7 +18,6 @@ export class TaskDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params:Params)=>{
       this.index = params['index'];
     });
-
     
     //check if localStorage of "Tasks" is full or empty
     if(localStorage.getItem('Tasks') === null){
